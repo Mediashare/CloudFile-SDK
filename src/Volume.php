@@ -31,16 +31,14 @@ Class Volume {
      * Create new volume
      *
      * @param string $name
-     * @param string $email
      * @param integer $size this variable represent volume size in Gb
      * @param string|null $cloudfile_password this variable is used for securisation of cloudfile server.
      * @return array
      */
-    public function create(string $name, string $email, int $size, ?string $cloudfile_password = null): array {
+    public function create(string $name, int $size, ?string $cloudfile_password = null): array {
         $url = "/volume/new";
         $response = $this->utils->request($url, [
             'name' => $name,
-            'email' => $email,
             'size' => $size,
             'cloudfile_password' => $cloudfile_password
         ]);
