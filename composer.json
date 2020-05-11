@@ -1,0 +1,13 @@
+{
+    "name": "mediashare/cloudfile",
+    "description": "Php library for interact with cloudfile api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mediashare",
+            "email": "mediashare.supp@gmail.com"
+        }
+    ],
+    "require": {}
+}
