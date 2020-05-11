@@ -12,7 +12,7 @@ Class Volume {
     * Get file(s) interactions
     */
     public function file(): File {
-        $file = new File($utils);
+        $file = new File($this->utils);
         return $file;
     }
 
