@@ -4,7 +4,7 @@ use Mediashare\CloudFile\Utils;
 use Mediashare\CloudFile\Volume;
 Class CloudFile {
     private $host = "https://api.cloudfile.tech";
-    private $apikey;
+    private $apikey = null;
     protected $utils;
 
     /**
@@ -13,7 +13,7 @@ Class CloudFile {
      * @param string $host CloudFile host server
      * @param string $apikey Volume apikey
      */
-    public function __construct(string $host = null, string $apikey) {
+    public function __construct(string $host = null, string $apikey = null) {
         if ($host):$this->host = $host;endif;
         $this->apikey = $apikey;
         $this->utils = new Utils($this->host, $this->apikey);
