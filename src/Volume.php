@@ -6,7 +6,14 @@ Class Volume {
     public $utils;
     public function __construct(Utils $utils) {
         $this->utils = $utils;
-        $this->file = new File($utils);
+    }
+
+    /**
+    * Get file(s) interactions
+    */
+    public function file(): File {
+        $file = new File($utils);
+        return $file;
     }
 
     /**

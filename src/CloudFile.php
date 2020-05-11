@@ -18,13 +18,28 @@ Class CloudFile {
         $this->apikey = $apikey;
         $this->utils = new Utils($this->host, $this->apikey);
     }
+
     /**
-     * Get volume
+     * Get volume interactions
      *
+     * @param string|null $apikey if you want use specific volume
      * @return Volume
      */
-    public function getVolume(): Volume {
-        $volume = new Volume($this->utils);
+    public function volume(string $apikey = null): Volume {
+    	if ($apikey):
+    		$utils = new Utils($this->host, $apikey);
+        	$volume = new Volume($utils);
+        else: $volume = new Volume($this->utils); endif;
         return $volume;
+    }
+
+    /**
+     * Get file(s) interactions
+     *
+     * @param string|null $apikey if you want use specific volume
+     * @return File
+     */
+    public function file(string $apikey = null): File {
+    	return $this->volume($apikey)->file();
     }
 }

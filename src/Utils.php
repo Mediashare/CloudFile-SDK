@@ -7,6 +7,7 @@ Class Utils {
         $this->host = $host;
         $this->apikey = $apikey;
     }
+    
     public function request(string $url, ?array $queries = []) {
         $url = rtrim($this->host, '/').$url;
         if ($this->apikey): $headers = ['apikey: '.$this->apikey];
