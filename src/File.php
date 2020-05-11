@@ -1,6 +1,5 @@
 <?php
 namespace Mediashare\CloudFile;
-
 Class File {
     private $utils;
     public function __construct(Utils $utils) {

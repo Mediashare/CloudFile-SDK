@@ -1,10 +1,8 @@
 <?php
-
 namespace Mediashare\CloudFile;
-
 use Mediashare\CloudFile\File;
 use Mediashare\CloudFile\Utils;
-Class Volume extends Utils {
+Class Volume {
     public $utils;
     public function __construct(Utils $utils) {
         $this->utils = $utils;

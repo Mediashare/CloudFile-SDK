@@ -7,3 +7,4 @@ $cloudfile = new \Mediashare\CloudFile\CloudFile(
 $volume = $cloudfile->getVolume();
 $information = $volume->info();
 $files = $volume->file->list();
+var_dump($files);

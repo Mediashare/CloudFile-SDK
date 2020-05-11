@@ -1,9 +1,7 @@
 <?php
 namespace Mediashare\CloudFile;
-
 use CloudflareBypass\CFCurlImpl;
 use CloudflareBypass\Model\UAMOptions;
-
 Class Utils {
     public function __construct(string $host, string $apikey) {
         $this->host = $host;
