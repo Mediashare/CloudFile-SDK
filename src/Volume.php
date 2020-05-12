@@ -47,8 +47,8 @@ Class Volume {
 
     /**
      * Edit volume informations
-     *
-     * @param array $queries [name, size, online, private]
+     *	- For edit size & online you need cloudfile_password
+     * @param array $queries [name, private, cloudfile_password, size, online]
      * @return array
      */
     public function edit(array $queries): array {
