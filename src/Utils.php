@@ -92,9 +92,10 @@ Class Curl {
         if (0 !== $errno) {
             $this->retry++;
             if ($this->retry > 5):
-                throw new \RuntimeException($error, $errno);
+                // throw new \RuntimeException($error, $errno);
+            else:
+                $result = $this->request($url, $arguments, $headers);
             endif;
-            $result = $this->request($url, $arguments, $headers);
         }
 
         return $result;
