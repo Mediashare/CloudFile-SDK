@@ -46,11 +46,21 @@ Class CloudFile {
     /**
      * Get server statistiques
      *
-     * @param string|null $apikey if you want use specific volume
      * @return array
      */
     public function stats(): array {
         $url = "/";
+        $response = $this->utils->request($url, null);
+        return $response;
+    }
+
+    /**
+     * Get all public volumes
+     *
+     * @return array
+     */
+    public function volumes(): array {
+        $url = "/volumes";
         $response = $this->utils->request($url, null);
         return $response;
     }
