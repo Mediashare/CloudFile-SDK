@@ -51,11 +51,9 @@ Class File {
      * @param string $id
      * @return array
      */
-    public function info(string $id, ?string $apikey = null) {
-        if ($apikey): $queries = ['apikey' => $apikey];
-        else: $queries = null; endif;
+    public function info(string $id) {
         $url = "/info/".$id;
-        $response = $this->utils->request($url, $queries);
+        $response = $this->utils->request($url, null);
         return $response;    
     }
 
@@ -65,11 +63,9 @@ Class File {
      * @param string $id
      * @return string|array
      */
-    public function show(string $id, ?string $apikey = null) {
-        if ($apikey): $queries = ['apikey' => $apikey];
-        else: $queries = null; endif;
+    public function show(string $id) {
         $url = "/show/".$id;
-        $response = $this->utils->request($url, $queries);
+        $response = $this->utils->request($url, null);
         return $response;    
     }
     
@@ -79,11 +75,9 @@ Class File {
      * @param string $id
      * @return string|array
      */
-    public function render(string $id, ?string $apikey = null) {
-        if ($apikey): $queries = ['apikey' => $apikey];
-        else: $queries = null; endif;
+    public function render(string $id) {
         $url = "/render/".$id;
-        $response = $this->utils->request($url, $queries);
+        $response = $this->utils->request($url, null);
         return $response;    
     }
 
