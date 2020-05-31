@@ -38,17 +38,17 @@ Class Curl {
         $result = $this->request($url, null, $headers);
         return $result;
     }
-    public function post(string $url, ?array $arguments = null, ?array $headers = null) {
-        $result = $this->request($url, $arguments, $headers);
+    public function post(string $url, ?array $queries = null, ?array $headers = null) {
+        $result = $this->request($url, $queries, $headers);
         return $result;
     }
-    public function download(string $url, string $destination, ?array $arguments = null, ?array $headers = null) {
-        $result = $this->request($url, $arguments, $headers, true);
+    public function download(string $url, string $destination, ?array $queries = null, ?array $headers = null) {
+        $result = $this->request($url, $queries, $headers, true);
         $fp = \fopen($destination, 'w'); \fwrite($fp, $result); \fclose($fp);
         return $destination;
         
     }
-    private function request(string $url, ?array $arguments = null, ?array $headers = null, ?bool $download = false) {
+    private function request(string $url, ?array $queries = null, ?array $headers = null, ?bool $download = false) {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -58,9 +58,9 @@ Class Curl {
         endif;
         curl_setopt($curl, CURLOPT_URL, $url);
 
-        if ($arguments): // Post Request
+        if ($queries): // Post Request
             curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $arguments);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $queries);
         endif;
         
         // Header
@@ -94,7 +94,7 @@ Class Curl {
             if ($this->retry > 5):
                 // throw new \RuntimeException($error, $errno);
             else:
-                $result = $this->request($url, $arguments, $headers);
+                $result = $this->request($url, $queries, $headers);
             endif;
         }
 

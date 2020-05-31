@@ -13,7 +13,7 @@ Class File {
      * @param array|null $metadata
      * @return array
      */
-    public function upload(string $filePath, ?array $metadata = null): array {
+    public function upload(string $filePath, ?array $metadata = null) {
         $url = "/upload";
         if ($metadata):$data = $metadata;endif;
         $data['file'] = curl_file_create($filePath);
@@ -27,7 +27,7 @@ Class File {
      * @param integer|null $page
      * @return array
      */
-    public function list(?int $page = 1): array {
+    public function list(?int $page = 1) {
         $url = "/list/".$page;
         $response = $this->utils->request($url, null);
         return $response;
@@ -39,7 +39,7 @@ Class File {
      * @param string $query
      * @return array
      */
-    public function search(string $query): array {
+    public function search(string $query) {
         $url = "/search?".$query;
         $response = $this->utils->request($url, null);
         return $response;
@@ -51,9 +51,11 @@ Class File {
      * @param string $id
      * @return array
      */
-    public function info(string $id): array {
+    public function info(string $id, ?string $apikey = null) {
+        if ($apikey): $queries = ['apikey' => $apikey];
+        else: $queries = null; endif;
         $url = "/info/".$id;
-        $response = $this->utils->request($url, null);
+        $response = $this->utils->request($url, $queries);
         return $response;    
     }
 
@@ -63,9 +65,11 @@ Class File {
      * @param string $id
      * @return string|array
      */
-    public function show(string $id) {
+    public function show(string $id, ?string $apikey = null) {
+        if ($apikey): $queries = ['apikey' => $apikey];
+        else: $queries = null; endif;
         $url = "/show/".$id;
-        $response = $this->utils->request($url, null);
+        $response = $this->utils->request($url, $queries);
         return $response;    
     }
     
@@ -75,9 +79,11 @@ Class File {
      * @param string $id
      * @return string|array
      */
-    public function render(string $id) {
+    public function render(string $id, ?string $apikey = null) {
+        if ($apikey): $queries = ['apikey' => $apikey];
+        else: $queries = null; endif;
         $url = "/render/".$id;
-        $response = $this->utils->request($url, null);
+        $response = $this->utils->request($url, $queries);
         return $response;    
     }
 
@@ -87,7 +93,7 @@ Class File {
      * @param string $id
      * @return array
      */
-    public function remove(string $id): array {
+    public function remove(string $id) {
         $url = "/remove/".$id;
         $response = $this->utils->request($url, null);
         return $response;    
