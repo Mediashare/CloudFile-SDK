@@ -9,14 +9,9 @@
             "email": "mediashare.supp@gmail.com"
         }
     ],
-    "require": {
-        "kyranrana/cloudflare-bypass": "^3.4"
-    },
     "autoload": {
         "psr-4": {
             "Mediashare\\CloudFile\\": "src/"
         }
-    },
-    "require-dev": {
     }
 }

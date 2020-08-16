@@ -70,18 +70,8 @@ Class Curl {
         endif;
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
-        // CloudFlare ByPass
-        $cfCurl = new CFCurlImpl();
-        $cfOptions = new UAMOptions();
-        $cfOptions->setVerbose(true);
-        // $cfOptions->setDelay(5);
-
-        try {
-            $result = $cfCurl->exec($curl, $cfOptions);
-        } catch (ErrorException $ex) {
-            echo "Unknown error -> " . $ex->getMessage();
-        }
-
+       
+        $result = curl_exec($curl);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         
         // Error(s)
